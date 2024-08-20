@@ -1,0 +1,23 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every 30 minutes
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v2.0
+        with:
+          owner: 5HT2C
+          base: master
+          head: master
+          merge_method: rebase
+          pr_title: 'bump: Sync from remote'
+          auto_merge: true
+          retries: 3
+          retries_after: 5 # in minutes
