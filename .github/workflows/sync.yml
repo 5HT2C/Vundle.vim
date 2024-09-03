@@ -24,4 +24,4 @@ jobs:
           merge_method: rebase
           pr_title: 'bump: Sync from remote'
           retries: 3
-          retries_after: 5 # in minutes
+          retry_after: 5 # in minutes
