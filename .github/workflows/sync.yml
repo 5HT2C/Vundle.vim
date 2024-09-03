@@ -1,0 +1,27 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every 30 minutes
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: tgymnich/fork-sync@v2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: '5HT2C'
+          repo: 'Vundle.vim'
+          base: master
+          head: master
+          auto_merge: true
+          merge_method: rebase
+          pr_title: 'bump: Sync from remote'
+          retries: 3
+          retry_after: 5 # in minutes
