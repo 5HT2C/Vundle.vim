@@ -13,7 +13,9 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v2.0
         with:
-          owner: 5HT2C
+          token: ${{ secrets.FORK_SYNC_TOKEN }}
+          owner: '5HT2C'
+          repo: 'Vundle.vim'
           base: master
           head: master
           merge_method: rebase
