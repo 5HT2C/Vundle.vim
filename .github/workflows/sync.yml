@@ -7,17 +7,20 @@ on:
 
 jobs:
   sync:
-
     runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
 
     steps:
       - uses: tgymnich/fork-sync@v2.0
         with:
-          token: ${{ secrets.FORK_SYNC_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: '5HT2C'
           repo: 'Vundle.vim'
           base: master
           head: master
+          auto_merge: true
           merge_method: rebase
           pr_title: 'bump: Sync from remote'
           retries: 3
